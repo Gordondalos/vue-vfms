@@ -13,8 +13,9 @@
     <div v-html="link"></div>
     <h2 v-on:mouseover="hover">{{counter}}</h2>
 
-    <button v-on:click="addCount(5), $event">Увеличить</button>
+    <button v-on:click="addCount(5, $event)">Увеличить</button>
     <button @click="counter--">Уменьшить</button>
+    <button v-on:click.prevent="hover()">Не сбрасывает</button>
 
 </div>
 
