@@ -16,7 +16,8 @@
     <h3>{{model}}</h3>
 
     <button v-on:click="addCount(5, $event)">Увеличить</button>
-    <button @click="counter--">Уменьшить</button>
+    <button :class="{'active': isActive}"
+            @click="counter--">Уменьшить</button>
     <button v-on:click.prevent="hover()">On Change</button>
 
 </div>

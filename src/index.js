@@ -3,6 +3,7 @@ import './style/main.scss';
 new Vue( {
     el: '#App',
     data: {
+        model: "Какой то текст",
         counter: 0,
         msg: 'Привет вью',
         url: 'https://www.google.com/',
