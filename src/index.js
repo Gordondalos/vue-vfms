@@ -3,6 +3,7 @@ import './style/main.scss';
 var vue1 = new Vue( {
     el: '#App',
     data: {
+        isActive: true,
         model: "Какой то текст",
         counter: 0,
         msg: 'Привет вью',
@@ -17,6 +18,7 @@ var vue1 = new Vue( {
         addCount: function ( count, event ) {
             console.log( event );
             this.counter += count;
+            this.$refs.heading.style.color = 'red';
         },
 
         hover: function () {
@@ -27,6 +29,7 @@ var vue1 = new Vue( {
 
     computed: {
         myComputedVar: function () {
+            console.log(this.$refs);
             return  2 + 3
         }
     },
