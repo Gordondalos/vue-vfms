@@ -10,7 +10,45 @@ var vue1 = new Vue( {
         url: 'https://www.google.com/',
         link: '<a href="http://google.com">google2</a>'
     },
+
+    // Жизненный цикл
+    beforeCreate: function() {
+      console.log("До создания");
+    },
+    created: function(){
+        console.log("создано");
+    },
+    beforeMount: function(){
+      console.log('Готов вставить шаблон в дом');
+    },
+
+    mounted: function(){
+        console.log('Вставил в дерево');
+    },
+
+    beforeDestroy: function(){
+        console.log('До Удаления');
+    },
+    destroyed: function(){
+        console.log('Удалилось');
+    },
+
+    // цикличные этапы
+    beforeUpdate : function(){
+        console.log('До обновления');
+    },
+    updated: function(){
+        console.log('После обновления');
+    },
+
+
+
+
     methods: {
+        destroyMe: function(){
+            vue1.destroy();
+        },
+
         changeName: function ( event ) {
             this.msg = event.target.value;
         },
@@ -27,6 +65,7 @@ var vue1 = new Vue( {
 
     },
 
+    // вычисляемые свойства
     computed: {
         myComputedVar: function () {
             console.log(this.$refs);
@@ -34,6 +73,7 @@ var vue1 = new Vue( {
         }
     },
 
+    // наблюдатели
     watch: {
         // следим за изменением урла
         url: function ( value ) {
@@ -45,7 +85,6 @@ var vue1 = new Vue( {
             console.log( value );
         }
     },
-
     // так можно писать шаблон внутри js
     //template: '<h1>Привет мир</h1>'
 } );
