@@ -40,10 +40,6 @@ var vue1 = new Vue( {
     updated: function(){
         console.log('После обновления');
     },
-
-
-
-
     methods: {
         destroyMe: function(){
             vue1.destroy();
