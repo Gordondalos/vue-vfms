@@ -11,6 +11,9 @@ const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 const ExtractTextPlugin = require( "extract-text-webpack-plugin" );
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const devMode = process.env.NODE_ENV !== 'production';
+
 //const { CheckerPlugin } = require( 'awesome-typescript-loader' );
 
 //const WebpackStrip = require( 'strip-loader' );
@@ -44,7 +47,7 @@ module.exports = {
     // это указывает какие сущьности можно подключать без расширения
     resolve: {
         extensions: [
-            '.ts', '.tsx', '.js', '.jsx'
+            '.ts', '.tsx', '.js', '.jsx', '.scss'
         ]
     },
 
@@ -84,6 +87,13 @@ module.exports = {
         //new CheckerPlugin(),
 
        // new ExtractTextPlugin( '[name].css' ),
+
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: devMode ? '[name].css' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+        })
 
     ],
 
@@ -129,34 +139,18 @@ module.exports = {
                 loader: 'expose-loader?$' // тут указывается в какую переменную их положить
             },
 
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
+
 
             // работа с sass
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract( {
-                    fallback: "style-loader",
-                    allChunks: true,
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                // If you are having trouble with urls not resolving add this setting.
-                                // See https://github.com/webpack-contrib/css-loader#url
-                                url: false,
-                                minimize: false,
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        }
-                    ]
 
-                } ),
-            },
 
             // лоадер для тайпскрипта
             // {
