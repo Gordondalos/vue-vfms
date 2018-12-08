@@ -14,14 +14,32 @@ new Vue( {
             this.msg = event.target.value;
         },
 
-        addCount: function (count, event) {
-            console.log(event);
+        addCount: function ( count, event ) {
+            console.log( event );
             this.counter += count;
         },
 
-        hover: function (  ) {
+        hover: function () {
             this.counter = 0;
         }
 
+    },
+
+    computed: {
+        myComputedVar: function () {
+            return = 2 + 3
+        }
+    },
+
+    watch: {
+        // следим за изменением урла
+        url: function ( value ) {
+            console.log( value );
+        },
+
+        // следим за изменениями соббщения
+        msg: function ( value ) {
+            console.log( value );
+        }
     }
 } );
