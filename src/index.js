@@ -1,4 +1,4 @@
-require( './style/main.scss' );
+import './style/main.scss';
 
 new Vue( {
     el: '#App',
@@ -13,7 +13,8 @@ new Vue( {
             this.msg = event.target.value;
         },
 
-        addCount: function (count) {
+        addCount: function (count, event) {
+            console.log(event);
             this.counter += count;
         },
 
