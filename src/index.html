@@ -9,9 +9,9 @@
 <div id="App">
     <input type="text" v-on:input="changeName">
     {{msg}}
-    <a v-bind:href="url">Google</a>
+    <a :href="url">Google</a>
     <div v-html="link"></div>
-    <h2 v-on:mouseover="hover">{{counter}}</h2>
+    <h2 @mouseover="hover">{{counter}}</h2>
 
     <button v-on:click="addCount(5, $event)">Увеличить</button>
     <button @click="counter--">Уменьшить</button>
