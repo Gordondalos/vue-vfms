@@ -1,6 +1,6 @@
 import './style/main.scss';
 
-new Vue( {
+var vue1 = new Vue( {
     el: '#App',
     data: {
         model: "Какой то текст",
@@ -43,3 +43,5 @@ new Vue( {
         }
     }
 } );
+
+vue1.superTitle = 'Мама не горюй';
