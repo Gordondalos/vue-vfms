@@ -44,7 +44,13 @@ var vue1 = new Vue( {
         msg: function ( value ) {
             console.log( value );
         }
-    }
+    },
+
+    // так можно писать шаблон внутри js
+    //template: '<h1>Привет мир</h1>'
 } );
 
 vue1.superTitle = 'Мама не горюй';
+
+// так можно маунтить к какому то диву а не через элемент
+vue1.$mount('#App');
